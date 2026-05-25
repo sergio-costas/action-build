@@ -68,8 +68,13 @@ export class SnapcraftBuilder {
     }
 
     const snapcraft = ['snapcraft']
+    const args = this.snapcraftArgs.split(/\s+/)
+    if (!args.includes('pack')) {
+      snapcraft.push('pack');
+    }
+
     if (this.snapcraftArgs) {
-      snapcraft.push(...this.snapcraftArgs.split(/\s+/))
+      snapcraft.push(...args)
     }
     if (this.uaToken) {
       snapcraft.push('--ua-token', this.uaToken)
