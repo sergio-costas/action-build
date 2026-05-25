@@ -70,7 +70,7 @@ test('SnapcraftBuilder.build runs a snap build', async () => {
   expect(ensureSnapcraft).toHaveBeenCalled()
   expect(execMock).toHaveBeenCalledWith(
     'sudo',
-    ['-u', user, '-E', 'snapcraft'],
+    ['-u', user, '-E', 'snapcraft', 'pack'],
     {
       cwd: projectDir,
       env: expect.objectContaining({
@@ -185,7 +185,7 @@ test('SnapcraftBuilder.build can pass additional arguments', async () => {
   const user = os.userInfo().username
   expect(execMock).toHaveBeenCalledWith(
     'sudo',
-    ['-u', user, '-E', 'snapcraft', '--foo', '--bar'],
+    ['-u', user, '-E', 'snapcraft', 'pack', '--foo', '--bar'],
     expect.anything()
   )
 })
@@ -222,7 +222,7 @@ test('SnapcraftBuilder.build can pass UA token', async () => {
   const user = os.userInfo().username
   expect(execMock).toHaveBeenCalledWith(
     'sudo',
-    ['-u', user, '-E', 'snapcraft', '--ua-token', 'test-ua-token'],
+    ['-u', user, '-E', 'snapcraft', 'pack','--ua-token', 'test-ua-token'],
     expect.anything()
   )
 })
